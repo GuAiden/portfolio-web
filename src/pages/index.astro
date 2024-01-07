@@ -1,13 +1,22 @@
 ---
-import Layout from '../layouts/App.astro';
+import App from '../layouts/App.astro';
+import TwoBlockSection from '../layouts/TwoBlockSection.astro';
 import Card from '../components/Card.astro';
 ---
 
-<Layout>
+<App>
 	<main>
 		<h1 class="mt-5">Australian Tech Grads</h1>
+		<TwoBlockSection>
+			<div>
+				Test
+			</div>
+			<div>
+				Second
+			</div>
+		</TwoBlockSection>
 	</main>
-</Layout>
+</App>
 
 <style>
 	main {
