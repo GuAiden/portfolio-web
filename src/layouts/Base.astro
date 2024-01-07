@@ -1,42 +1,42 @@
 ---
-// import '../styles/index.css';
-interface Props {
-	title: string;
-}
-
-const { title } = Astro.props;
 ---
-
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content="Astro description" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;1,300&family=Roboto:wght@300&display=swap"
+			rel="stylesheet"
+		/>
+		<script is:inline>
+      // ☝️ This script prevent the FART effect.
+      if (localStorage.getItem("theme") === null) {
+        document.documentElement.setAttribute("data-theme", "light");
+      } else
+      document.documentElement.setAttribute("data-theme", localStorage.getItem("theme"));
+      // "theme" LocalStorage value is set by the package to remember user preference.
+      // The value is checked and applyed before rendering anything.
+  	</script>
+		<script>
+      import { themeChange } from "theme-change";
+      themeChange();
+       // 👆 you could import the CDN directly instead of these two lines
+    </script>
 	</head>
 	<body>
 		<slot />
 	</body>
 </html>
 <style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
 	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-		background-size: 224px;
+		font-family: "Roboto", sans-serif;
+		font-family: "Lato", sans-serif;
 	}
 	code {
 		font-family:
